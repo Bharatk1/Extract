@@ -1,5 +1,7 @@
 package com.extract.application;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "customers")
-	public class User {
+	public class User implements Serializable {
 	   
 	    @Id
 	    private int id;
