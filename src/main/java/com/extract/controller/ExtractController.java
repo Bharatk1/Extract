@@ -1,33 +1,26 @@
-package com.extract.application;
+package com.extract.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import dto.DtoRequest;
-import dto.DtoResponse;
-import dto.IdNameAndAddressResponse;
-import dto.NameRespone;
-import dto.SortResponse;
+import com.extract.dto.DtoRequest;
+import com.extract.dto.IdNameAndAddressResponse;
+import com.extract.dto.NameRespone;
+import com.extract.dto.SortResponse;
+import com.extract.entity.User;
+import com.extract.repositry.UserRepository;
 
 @RestController
-@SpringBootApplication
-public class Application {
+public class ExtractController {
 	@Autowired
 	UserRepository user;
-
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-
-	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	public boolean home(@RequestBody List<DtoRequest> name) {
@@ -92,11 +85,11 @@ public class Application {
 		}
 		return null;
 	}
-	
+
 	@RequestMapping(value = "/findAddressAndSort")
-	public List<IdNameAndAddressResponse> getIdNameAndAdrressdetsil(){
-		List <IdNameAndAddressResponse> inas = new ArrayList<>();
-		List <User> us = user.findAllByOrderByAddressAsc();
+	public List<IdNameAndAddressResponse> getIdNameAndAdrressdetsil() {
+		List<IdNameAndAddressResponse> inas = new ArrayList<>();
+		List<User> us = user.findAllByOrderByAddressAsc();
 		for (User list : us) {
 			IdNameAndAddressResponse ina = new IdNameAndAddressResponse();
 			ina.setId(list.getId());
@@ -106,17 +99,16 @@ public class Application {
 		}
 		return inas;
 	}
-	
+
 	@RequestMapping(value = "/findNameDescSort")
 	public List<NameRespone> getNameSort() {
-		List <NameRespone> rs = new ArrayList<>();
-		List <User> us = user.findAllByOrderByNameDesc();
-		for(User list : us) {
-		NameRespone nr = new NameRespone();
-		nr.setName(list.getName());
-		rs.add(nr);
+		List<NameRespone> rs = new ArrayList<>();
+		List<User> us = user.findAllByOrderByNameDesc();
+		for (User list : us) {
+			NameRespone nr = new NameRespone();
+			nr.setName(list.getName());
+			rs.add(nr);
 		}
 		return rs;
 	}
-
 }

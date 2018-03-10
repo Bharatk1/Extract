@@ -1,4 +1,4 @@
-package dto;
+package com.extract.dto;
 
 public class DtoRequest {
 private String name;

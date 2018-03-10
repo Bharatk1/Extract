@@ -1,4 +1,4 @@
-	package com.extract.application;
+	package com.extract;
 	
 	import java.sql.Connection;
 	import java.sql.DriverManager;

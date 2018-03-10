@@ -1,4 +1,4 @@
-package com.extract.application;
+package com.extract.entity;
 
 import java.io.Serializable;
 
