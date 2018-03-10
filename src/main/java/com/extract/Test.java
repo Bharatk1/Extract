@@ -42,7 +42,7 @@
 					 System.out.println("success");
 					Statement stmt = conn.createStatement();
 	
-					ResultSet rs = stmt.executeQuery("select * from dbo.Customers where AGE=25");
+					ResultSet rs = stmt.executeQuery("select * from dbo.MANAGERS where AGE=25");
 	
 					// System.out.println("success");
 	
@@ -50,7 +50,7 @@
 	
 						String[] arr = null;
 	
-						String em = rs.getString("NAME");
+						String em = rs.getString("FIRST_NAME");
 						arr = em.split("\n");
 						for (int i = 0; i < arr.length; i++) {
 							// System.out.println(arr[i]);

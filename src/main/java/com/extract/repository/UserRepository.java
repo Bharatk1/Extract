@@ -1,11 +1,9 @@
-package com.extract.repositry;
+package com.extract.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.extract.dto.NameRespone;
-import com.extract.dto.SortResponse;
 import com.extract.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {

@@ -14,13 +14,18 @@ import com.extract.dto.DtoRequest;
 import com.extract.dto.IdNameAndAddressResponse;
 import com.extract.dto.NameRespone;
 import com.extract.dto.SortResponse;
+import com.extract.entity.ManagersEntity;
 import com.extract.entity.User;
-import com.extract.repositry.UserRepository;
+import com.extract.repository.ManagerRepository;
+import com.extract.repository.UserRepository;
 
 @RestController
 public class ExtractController {
 	@Autowired
 	UserRepository user;
+
+	@Autowired
+	ManagerRepository managersRepo;
 
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	public boolean home(@RequestBody List<DtoRequest> name) {
@@ -110,5 +115,10 @@ public class ExtractController {
 			rs.add(nr);
 		}
 		return rs;
+	}
+
+	@RequestMapping(value = "/findFirstName/{office}")
+	public ManagersEntity getFirstName(@PathVariable String office) {
+		return (ManagersEntity) managersRepo.findByOffice(office);
 	}
 }
